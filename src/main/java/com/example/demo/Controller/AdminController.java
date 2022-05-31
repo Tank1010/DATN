@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.Model.Contact;
 import com.example.demo.Model.Package;
 import com.example.demo.Model.PackageFeatures;
+import com.example.demo.Model.Property;
 import com.example.demo.Model.PropertyAmenities;
 import com.example.demo.Model.PropertyType;
 import com.example.demo.Model.User;
@@ -24,8 +25,10 @@ import com.example.demo.Service.ContactService;
 import com.example.demo.Service.PackageFeaturesService;
 import com.example.demo.Service.PackageService;
 import com.example.demo.Service.PropertyAmenitiesService;
+import com.example.demo.Service.PropertyService;
 import com.example.demo.Service.PropertyTypeService;
 import com.example.demo.Service.UserService;
+import com.example.demo.Model.Property;
 
 @Controller
 @RequestMapping("/Admin")
@@ -45,6 +48,8 @@ public class AdminController {
 	PropertyAmenitiesService amenitiesService;
 	@Autowired
 	ContactService contactService;
+	@Autowired
+	PropertyService propertyService;
 	
 	
 	@RequestMapping("/AdminDashBoard")
@@ -61,7 +66,7 @@ public class AdminController {
 
 	// Access Denied
 	@RequestMapping("/access-denied")
-	public String access_denid(RedirectAttributes attributes) {
+	public String access_denied(RedirectAttributes attributes) {
 		attributes.addFlashAttribute("error", true);
 		attributes.addFlashAttribute("message", "You Don't have permission");
 		return "redirect:/Admin/error-404";
@@ -180,6 +185,13 @@ public class AdminController {
 		Page<Contact> pl=contactService.findAllContact(pageable);
 		model.addAttribute("page",pl);
 		return "/Admin/viewAllContact";
+	}
+	
+	@RequestMapping("/approval-property")
+	public String approvalProperty(Model model, @PageableDefault(size=10) Pageable pageable) {
+		Page<Property> p2 = propertyService.findAll(pageable);
+		model.addAttribute("pageApproval", p2);
+		return "/Admin/approvalProperty";
 	}
 	
 }

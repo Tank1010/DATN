@@ -23,6 +23,9 @@ public interface PropertyRepository extends JpaRepository<Property, Integer> {
 	//Display property by TYpe Search
 	public Page<Property> findByPropertyType(String propertyType,Pageable pageable);
 	
+	//Disolay property By Approval and Not Rejected
+	public Page<Property> findByApprovedAndRejected(Boolean Approved, Boolean Rejected, Pageable pageable);
+	
 	//Search propety by given url
 		@Query("select new com.example.demo.Model.Property(p.propertyId,p.propertyName,p.propertyLocation,p.propertyCity,p.propertyPrice,"
 				+ " p.propertyType,p.propertyImage1,p.propertyImage2,p.propertySize,p.propertyDescription)"

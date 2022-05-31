@@ -26,7 +26,7 @@ public class Property {
 	String propertyUrl;
 	String propertyLocation;
 	String propertyCity;
-	String  propertyPrice;
+	String propertyPrice;
 	String propertyType;
 	String propertyImage1;String propertyImage2;String propertyImage3;String propertyImage4;
 	String propertyImage5;String propertyImage6;String propertyImage7;String propertyImage8;

@@ -130,4 +130,15 @@ public class PropertyService {
 		return propertyRepository.getBySearchUrl(s, pageable);
 	}
 	
+	// get all property NOT Approval
+	public Page<Property> findAllApproval(Pageable pageable){
+		return propertyRepository.findByApprovedAndRejected(false, false, pageable);
+	}
+	public Page<Property> findAllRejected(Pageable pageable){
+		return propertyRepository.findByApprovedAndRejected(false, true, pageable);
+	}
+	public Page<Property> findAllRemove(Pageable pageable){
+		return propertyRepository.findByApprovedAndRejected(true, true, pageable);
+	}
+	
 }

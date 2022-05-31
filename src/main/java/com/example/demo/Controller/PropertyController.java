@@ -446,7 +446,9 @@ public class PropertyController {
 	@RequestMapping(value = "/search-Property")
 	public String getSerchedProperty(@ModelAttribute SearchProperty search,
 			@PageableDefault(size = 3) Pageable pageable, Model model) {
-
+		if(search == null) {
+			return "redirect:/";
+		}
 		Page<Property> pages = propertyService.findAllPropertyBySearchUrl(search, pageable);
 		model.addAttribute("page", pages);
 		return "SearchProperties";
