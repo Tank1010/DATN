@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.Model.Contact;
@@ -189,9 +189,16 @@ public class AdminController {
 	
 	@RequestMapping("/approval-property")
 	public String approvalProperty(Model model, @PageableDefault(size=10) Pageable pageable) {
-		Page<Property> p2 = propertyService.findAll(pageable);
-		model.addAttribute("pageApproval", p2);
+		Page<Property> p2 = propertyService.findAllApproval(pageable);
+		model.addAttribute("page", p2);
 		return "/Admin/approvalProperty";
+	}
+	@RequestMapping(value = "/single-property")
+	public String singlePropertyDisplay(@RequestParam String Url, Model model) {
+
+			Property property = propertyService.getPropertyByPropertyUrl(Url);
+			model.addAttribute("property", property);
+			return "/Admin/propertyApproval";
 	}
 	
 }

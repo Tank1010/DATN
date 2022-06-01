@@ -379,6 +379,7 @@ public class PropertyController {
 			return "singleProperty";
 		}
 	}
+	
 
 	
 	//Display My Properties

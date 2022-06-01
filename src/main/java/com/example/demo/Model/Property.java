@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,9 +37,32 @@ public class Property {
 	String propertyBedroomes;
 	String propertyDescription;
 	String propertyRgistrationDate;
+	@Column(name="approved")
 	Boolean approved;
+	@Column(name="rejected")
 	Boolean rejected;
 	String searchUrl;
+	public Boolean getApproved() {
+		return approved;
+	}
+
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
+
+
+	public Boolean getRejected() {
+		return rejected;
+	}
+
+
+	public void setRejected(Boolean rejected) {
+		this.rejected = rejected;
+	}
+
+
+	
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="PropertyAndPropertyAmenities", joinColumns={@JoinColumn(name="property_ID", referencedColumnName="propertyId")}
@@ -66,6 +90,8 @@ public class Property {
 		this.propertyImage2 = propertyImage2;
 		this.propertySize = propertySize;
 		this.propertyDescription = propertyDescription;
+		this.approved = false;
+		this.rejected = false;
 	}
 	
 	  //Default parameterized

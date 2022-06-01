@@ -9,7 +9,7 @@
 		<!-- ============ Body content start ============= -->
 		<div class="main-content">
 			<div class="breadcrumb">
-				<h1>User</h1>
+				<h1>Các bài đăng đang chờ duyệt</h1>
 
 			</div>
 			<div class="separator-breadcrumb border-top"></div>
@@ -17,7 +17,7 @@
 				<div class="col-md-12">
 					<div class="card mb-4">
 						<div class="card-body">
-							<div class="card-title mb-3">Users</div>
+							<div class="card-title mb-3">Duyệt bài</div>
 							<form>
 								<div class="table-responsive">
 									<table class="table text-center" id="product_table">
@@ -32,40 +32,34 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="pro:${pageApproval.content}">
-												<td th:text="${pro.id}">userId</td>
+											<tr th:each="pro:${page.content}">
+												<td th:text="${pro.propertyId}">userId</td>
 												<td th:text="${pro.propertyCity}">fName</td>
 												<td th:text="${pro.propertyImage1}">lName</td>
-												<td th:text="${usr.mobile}">Mobile</td>
-												<td th:text="${usr.status}">Status</td>
-												<td th:text="${usr.roles}">Role</td>
-												<td><a class="text-success mr-2"
-													th:href="@{/user/editUser/(${usr.id})}"> <i
-														class="nav-icon i-Pen-2 font-weight-bold"></i>
-													</a>
-													<a class="text-success mr-2"
-													th:href="@{/user/editUser/(${usr.id})}"> <i
-														class="nav-icon i-Pen-2 font-weight-bold"></i>
-													</a>
+												<td class="text-danger">Đang chờ duyệt</td>
+												<td>
+													<div class="border border-primary">
+														<a th:href="@{/Admin/single-property/(Url=${pro.propertyUrl})}">Xem bài</a>
+													</div>
 												</td>
 											</tr>
 										</tbody>
 									</table>
 									<div class="pagination-div">
 										<span th:if="${page.hasPrevious()}"> <a
-											th:href="@{/Admin/viewAllUser(page=${page.number-1},size=${page.size})}">
+											th:href="@{/Admin/approval-property(page=${page.number-1},size=${page.size})}">
 												Previous </a>
 										</span>
 										<th:block
 											th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
 											<span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
 											<span th:unless="${page.number == i}"> <a
-												th:href="@{/Admin/viewAllUser(page=${i},size=${page.size})}">[[${i}+1]]
+												th:href="@{/Admin/approval-property(page=${i},size=${page.size})}">[[${i}+1]]
 											</a>
 											</span>
 										</th:block>
 										<span th:if="${page.hasNext()}"> <a
-											th:href="@{/Admin/viewAllUser(page=${page.number+1},size=${page.size})}">
+											th:href="@{/Admin/approval-property(page=${page.number+1},size=${page.size})}">
 												Next </a>
 										</span>
 									</div>
