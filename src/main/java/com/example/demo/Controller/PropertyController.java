@@ -457,10 +457,9 @@ public class PropertyController {
 	
 	// Favorite Property
 	@RequestMapping(value = "/myFavorite")
-	public String getFavoriteProperty(@RequestParam String Url,Principal user) {
+	public String getFavoriteProperty(@RequestParam String Url,@PageableDefault(size = 5) Pageable pageable,Principal user) {
 		User u = getCurrentUser();
 		if (u != null) {
-			System.out.println("url is " + Url);
 			Property p=propertyService.getPropertyByPropertyUrl(Url);
 			
 		return "redirect:/";

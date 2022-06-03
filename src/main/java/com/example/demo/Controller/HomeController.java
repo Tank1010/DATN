@@ -89,7 +89,7 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String homepage(Model model, @PageableDefault(size = 3) Pageable pageable) {
 
-		Page<Property> pages = propertyService.findAll(pageable);
+		Page<Property> pages = propertyService.findAllValid(pageable);
 		List<PropertyType> list = propertyTypeService.showAllPropertyType();
 		model.addAttribute("serchType", list);
 		model.addAttribute("page", pages);

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Model.Property;
 import com.example.demo.Model.SearchProperty;
+import com.example.demo.Repository.FavouriteRepository;
 import com.example.demo.Repository.PropertyRepository;
 
 @Service
@@ -22,7 +23,8 @@ public class PropertyService {
 	@Autowired
 	PropertyRepository propertyRepository;
 	
-	
+	@Autowired
+	FavouriteRepository favouriteRepo;
 
 	public void saveProperty(Property property) {
 		Date date = new Date();
@@ -104,6 +106,17 @@ public class PropertyService {
 		Property property = propertyRepository.getByPropertyUrl(url);
 		return property;
 	}
+	
+	public void rejectedProperty(String url) {
+		try {
+			Property property = getPropertyByPropertyUrl(url);
+			property.setRejected(true);
+			propertyRepository.save(property);
+			System.out.println("Save Success!");
+		}catch(Exception e){
+			System.out.println("save error!");
+		}
+	}
 
 	// Display All Properties of USerId
 	public Page<Property> findAllPropertyByUserId(int userId, Pageable pageable) {
@@ -139,6 +152,9 @@ public class PropertyService {
 	}
 	public Page<Property> findAllRemove(Pageable pageable){
 		return propertyRepository.findByApprovedAndRejected(true, true, pageable);
+	}
+	public Page<Property> findAllValid(Pageable pageable){
+		return propertyRepository.findByApprovedAndRejected(true, false, pageable);
 	}
 	
 }

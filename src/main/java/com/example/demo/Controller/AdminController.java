@@ -201,4 +201,15 @@ public class AdminController {
 			return "/Admin/propertyApproval";
 	}
 	
+	@RequestMapping(value="/reject-property")
+	public String rejectProperty(@RequestParam String Url) {
+		propertyService.rejectedProperty(Url);
+		return "redirect:/approval-property";
+	}
+	@RequestMapping(value="/acept-approval-property")
+	public String approvalProperty(@RequestParam String Url) {
+		propertyService.rejectedProperty(Url);
+		return "redirect:/approval-property";
+	}
+	
 }

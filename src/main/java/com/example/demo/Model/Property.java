@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,31 @@ public class Property {
 	@Column(name="rejected")
 	Boolean rejected;
 	String searchUrl;
+	String reason;
+	int priority;
+	Timestamp createdDate;
+	Timestamp modifiedDate;
+	
+	public String getReason() {
+		return reason;
+	}
+
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+
+	public int getPriority() {
+		return priority;
+	}
+
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+
 	public Boolean getApproved() {
 		return approved;
 	}

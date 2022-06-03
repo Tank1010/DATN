@@ -21,7 +21,18 @@ public class User {
 	String roles = "ROLE_USER";
 	String registrationDate;
 	String profilePhoto;
+	int numberPost;
 	
+	public int getNumberPost() {
+		return numberPost;
+	}
+
+
+	public void setNumberPost(int numberPost) {
+		this.numberPost = numberPost;
+	}
+
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub

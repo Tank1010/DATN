@@ -19,10 +19,11 @@
 					<div id="property-d-1" class="d-flex justify-content-center">
 						<div class="item" id="changedItem">
 							<img th:src="${'/uploads/property/'+property.propertyImage1}"
+							style="width: 700px; height: 400px"
 								alt="image" />
 						</div>
 					</div>
-					<div id="property-d-1-2" class="owl-carousel single">
+					<div id="property-d-1-2" class="owl-carousel single mt-32">
 						<div class="item" >
 							<img th:src="${'/uploads/property/'+property.propertyImage2}"
 								style="width: 218px; height: 122.56px"
@@ -115,11 +116,13 @@
 			<div class="d-flex justify-content-center submitBtn">
 				<a class="btn btn-primary text-white">Duyệt bài</a>
 				<a class="btn btn-danger text-white ml-32" id="rejectPost" onclick="openReason()">Từ chối bài</a>
+				<a class="btn btn-danger text-white ml-32" th:href="@{/Admin/reject-property/(Url=${property.propertyUrl})}">Xóa bài</a>
+				
 			</div>
-			<form class="rejected mt-32" id="tuananhtest" method="post">
+			<div class="rejected mt-32" id="tuananhtest">
 				<textarea  id="message" name="message" placeholder="Lí do từ chối" class="form-control"></textarea>
-				<button type="submit" class="btn btn-danger text-white mt-8" onclick="openReason()">Xóa bài viết</button>
-			</form>
+				
+			</div>
 		</div>
 	</section>
 		</div>
@@ -128,22 +131,6 @@
 		<div th:replace="/Admin/Layout :: footer"></div>
 		<!-- footer end -->
 	</div>
-	<div th:replace="/Admin/Layout:: footerLink"></div>
-	<script type="text/javascript">
-		function openReason(){
-			document.getElementById("tuananhtest").style.display ='block';
-		}
-		
-		$(document).ready(function(){
-			  $(".owl-carousel").owlCarousel();
-			});
-		
-		// getImage.forEach(element => {
-		// 	let getImage = element.
-		// 	addEventListener('click',function{
-
-		// 	})
-		// });
-	</script>
+	<div th:replace="/Admin/Layout :: footerLink"></div>
 </body>
 </html>
