@@ -16,7 +16,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="text-uppercase">Your Property</h1>
+					<h1 class="text-uppercase">Bài đăng của bạn</h1>
 				</div>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 		<br> <br>
 		<div class="col-sm-1 col-md-2"></div>
 		<div class="col-sm-10 col-md-8">
-			<h2 class="text-uppercase bottom40">Edit Property</h2>
+			<h2 class="text-uppercase bottom40">Chỉnh sửa</h2>
 			<!-- y" -->
 			<form id="addProperty" action="/property/save-edited-property"
 				method="post" enctype="multipart/form-data"
@@ -40,7 +40,7 @@
 						<input class="form-control" type="hidden" name="propertyId"
 							th:field="*{propertyId}" value="${prop.propertyId}">
 						<div class="single-query form-group bottom20">
-							<label>Apartment Name / House Name</label> <input type="text"
+							<label>Tiêu đề bài đăng</label> <input type="text"
 								id="propertyName" th:field="*{propertyName}"
 								th:value="${prop.propertyName}" class="keyword-input"
 								required="required">
@@ -48,17 +48,21 @@
 					</div>
 					<div class="col-sm-6">
 						<div class="single-query form-group bottom20">
-							<label>Location</label> <input id="propertyLocation"
+							<label>Địa chỉ</label> <input id="propertyLocation"
 								th:value="${prop.propertyLocation}"
 								th:field="*{propertyLocation}" type="text" class="keyword-input"
 								required>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<div class="single-query form-group bottom20">
-							<label>City</label> <input id="propertyCity"
-								th:field="*{propertyCity}" type="text" class="keyword-input"
-								th:value="${prop.propertyCity}" required>
+					<div class="col-sm-4">
+						<div class="single-query bottom20">
+							<label>Chọn Thành Phố </label>
+							<div class="intro">
+								<select required id="propertyCity" th:field="*{propertyCity}">
+									<option th:each="ty:${citySelection}" th:value="${ty.matp}"
+										th:text="${ty.name}"></option>
+								</select>
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-6">

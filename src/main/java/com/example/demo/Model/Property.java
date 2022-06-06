@@ -28,6 +28,9 @@ public class Property {
 	String propertyUrl;
 	String propertyLocation;
 	String propertyCity;
+	String propertyCity2;
+	
+
 	String propertyPrice;
 	String propertyType;
 	String propertyImage1;String propertyImage2;String propertyImage3;String propertyImage4;
@@ -359,6 +362,37 @@ public class Property {
 	public void setAmenitiesList(List<PropertyAmenities> amenitiesList) {
 		this.amenitiesList = amenitiesList;
 	}
+
+	public String getPropertyCity2() {
+		return propertyCity2;
+	}
+
+
+	public void setPropertyCity2(String propertyCity2) {
+		this.propertyCity2 = propertyCity2;
+	}
+
+
+	public Timestamp getCreatedDate() {
+		return createdDate;
+	}
+
+
+	public void setCreatedDate(Timestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+
+
+	public Timestamp getModifiedDate() {
+		return modifiedDate;
+	}
+
+
+	public void setModifiedDate(Timestamp modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+
 
 
 	@Override

@@ -30,6 +30,7 @@ import com.example.demo.Model.Property;
 import com.example.demo.Model.PropertyAmenities;
 import com.example.demo.Model.PropertyType;
 import com.example.demo.Model.SearchProperty;
+import com.example.demo.Model.Tinhthanhpho;
 import com.example.demo.Model.User;
 import com.example.demo.Repository.OrderPackageRepository;
 import com.example.demo.Service.EmailService;
@@ -38,6 +39,7 @@ import com.example.demo.Service.PackageService;
 import com.example.demo.Service.PropertyAmenitiesService;
 import com.example.demo.Service.PropertyService;
 import com.example.demo.Service.PropertyTypeService;
+import com.example.demo.Service.SelectionService;
 import com.example.demo.Service.UserService;
 
 @Controller
@@ -59,6 +61,8 @@ public class PropertyController {
 	OrderPackageRepository orderPackageRepository;
 	@Autowired
 	EmailService emailService;
+	@Autowired
+	SelectionService selectionService;
 	
 
 	public static String uploadDirectory = System.getProperty("user.dir")
@@ -78,9 +82,11 @@ public class PropertyController {
 		if (user != null) {
 			List<PropertyType> typelist = propertyTypeService.showAllPropertyType();
 			model.addAttribute("type", typelist);
+			List<Tinhthanhpho> typeCity = selectionService.getAllCities();
 			List<PropertyAmenities> pl = amenitiesService.showAllPropertyAmenities();
 			model.addAttribute("listAmenity", pl);
 			model.addAttribute("prop", new Property());
+			model.addAttribute("citySelection", typeCity);
 			return "addProperty";
 		} else {
 			return "redirect:/login";
@@ -206,6 +212,8 @@ public class PropertyController {
 				property.setPropertyImage10(id + propertyImage10.getOriginalFilename() );
 			}
 			property.setUserId(u.getId());
+			property.setApproved(false);
+			property.setRejected(false);
 
 			propertyService.saveProperty(property);
 			Page<Property> pages = propertyService.findAllPropertyByUserId(u.getId(), pageable);
@@ -223,8 +231,10 @@ public class PropertyController {
 	public String editProperty(@RequestParam String Url, Model model) {
 		List<PropertyType> typelist = propertyTypeService.showAllPropertyType();
 		List<PropertyAmenities> pl = amenitiesService.showAllPropertyAmenities();
+		List<Tinhthanhpho> typeCity = selectionService.getAllCities();
 		model.addAttribute("type", typelist);
 		model.addAttribute("listAmenity", pl);
+		model.addAttribute("citySelection", typeCity);
 		model.addAttribute("prop",  propertyService.getPropertyByPropertyUrl(Url));
 
 		return "editProperty";

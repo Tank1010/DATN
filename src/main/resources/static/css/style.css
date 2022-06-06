@@ -61,7 +61,7 @@
 
 /* General Styling */
 body{
-	font-family: 'robotoregular';
+	font-family: 'roboto';
 	height:100%;
 	width:100%;
 	overflow-x:hidden;
@@ -109,11 +109,11 @@ h1,h2,h3,h4{
 	margin:0;
 }
 h3, h4{
-	font-family: 'robotomedium';
+	font-family: 'roboto';
 }
 .btn_common, h2, nav.bootsnav .megamenu-content .title,
 .fullscreen_inner h3, .fullscreen_inner h1{
-	font-family: 'roboto_condensedbold';
+	font-family: 'roboto';
 }
 .white_header nav.navbar.bootsnav ul.nav > li > a,
 .rev_slider_wrapper .black-caption h2,
@@ -123,7 +123,7 @@ h3, h4{
 .feature_main .bottom h4, .proerty_text h4, #filters-gallery .cbp-filter-item, .property_item .price h4,
 #parallax_four h4, #parallax_four h2,
 .slider-property h2{
-	font-family: 'robotoregular';
+	font-family: 'roboto';
 }
 h2{
 	font-size:32px;
@@ -2113,7 +2113,7 @@ i.icon-safety-shower{font-size:16px !important;}
 	color:#fff;
 	margin:25px 0;
 	float:none;
-	font-family: 'robotoregular';
+	font-family: 'roboto';
 }
 #deals .deal_media .dealer{
 	padding:21px 15px;
@@ -2192,7 +2192,7 @@ i.icon-safety-shower{font-size:16px !important;}
 	color:#fff;
 	margin:25px 0;
 	float:none;
-	font-family: 'robotoregular';
+	font-family: 'roboto';
 }
 /* ---------------------- Best Deals Ends ---------------------- */
 
@@ -3405,7 +3405,7 @@ aside .search-propertie-filters {
 .banner h1{
 	font-size:64px;
 	margin-top:166px;
-	font-family: 'roboto_condensedbold';
+	font-family: 'roboto';
 }
 .banner h1 > span{
 	font-size:32px;
@@ -3524,7 +3524,7 @@ aside .search-propertie-filters {
 	font-weight:bold;
 }
 h1.bold-text{
-	font-family: 'roboto_condensedbold';
+	font-family: 'roboto';
 	font-weight:normal !important;
 }
 .error-text h3 {
