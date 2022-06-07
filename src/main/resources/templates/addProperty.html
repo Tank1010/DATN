@@ -42,14 +42,7 @@
 							<label>Tên bài viết</label> <input type="text"
 								id="propertyName" th:field="*{propertyName}"
 								class="keyword-input" required="required"
-								placeholder="Enter your property title">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="single-query form-group bottom20">
-							<label>Địa chỉ</label> <input id="propertyLocation"
-								th:field="*{propertyLocation}" type="text" class="keyword-input"
-								required placeholder="Enter Proprty Location">
+								placeholder="Nhập tiêu đề bài viết">
 						</div>
 					</div>
 					<div class="col-sm-4">
@@ -63,6 +56,14 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-sm-6">
+						<div class="single-query form-group bottom20">
+							<label>Địa chỉ</label> <input id="propertyLocation"
+								th:field="*{propertyLocation}" type="text" class="keyword-input"
+								required placeholder="Nhập địa chỉ của bạn">
+						</div>
+					</div>
+					
 						<!-- <div class="col-sm-6">
 						<div class="single-query form-group bottom20">
 							<label>Thành phố</label> <input id="propertyCity"
@@ -108,7 +109,7 @@
 						<div class="single-query form-group bottom20">
 							<label>Giá bất động sản</label> <input id="propertyPrice"
 								th:field="*{propertyPrice}" type="text" class="keyword-input"
-								required placeholder="VNĐ">
+								required placeholder="Triệu VNĐ">
 						</div>
 					</div>
 				</div>
@@ -356,6 +357,11 @@
 
 	<div th:replace="layout :: footerLink"></div>
 	<!--=====  End of JS files ======-->
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3PlurOOu_USIExKA078z0tiV7LrJEzz0&libraries=places"></script>
+	<script>
+      var input = document.getElementById('propertyLocation');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    </script>
 	<script>
 		$(document).ready(function{
 			var autocomplete;

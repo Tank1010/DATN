@@ -16,8 +16,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="text-uppercase">Welcome</h1>
-					<p>To Castle Real Esatate</p>
+					<h1 class="text-uppercase">Chào mừng</h1>
+					<p>đến với Kass Real Esatate</p>
 
 				</div>
 			</div>
@@ -30,9 +30,8 @@
 	<div class="container">
 		<div class="row" >
 			<div  th:if="${msg == 'new'}" class="col-md-12">
-				<h2 class="text-uppercase heading_space">Buy package To get
-					Premium Service</h2>
-					<p class="heading_space">Enjoy the unlimited Service and Extra Benifits after buying package !!!!!</p>
+				<h2 class="text-uppercase heading_space">Mua gói để được hưởng các quyền lợi thêm</h2>
+					<p class="heading_space">Các gói được sử dụng để nâng cao trách nhiệm của việc đăng bài!!!!!</p>
 			</div>
 			<div th:if="${msg == 'over'}"  class="col-md-12">
 			<h2 class="text-uppercase heading_space">Buy package To get
@@ -53,16 +52,16 @@
 								<u>Silver</u>
 							</h2>
 							<br>
-							<h3 th:text="${'Rs.'+pkg.packagePrice}">Price</h3>
+							<h3 th:text="${pkg.packagePrice+' $'}">Price</h3>
 							<br>
 							<div class="text-left"  th:each="list:${pkg.pkgFeatureList}">
 								<ul >
-									<li style="list-style-type: '\2713" th:text="${list.featureName}" >&nbsp&nbspOne Month Subscription</li><br>
+									<li style="list-style-type: '\2713" th:text="${' '+list.featureName}" >&nbsp&nbspOne Month Subscription</li><br>
 								</ul>
 							</div>
 							<br>
 							 <br>
-							 <button  type="submit" class="btn-yellow border_radius">Buy Package</button>
+							 <button  type="submit" class="btn-yellow border_radius" th:text="${pkg.packagePrice+' $'}"></button>
 							 <br>
 							<br>
 							 <p  th:text="${pkg.packageDuration +' Days'}">(For One Month)</p>

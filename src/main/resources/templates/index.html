@@ -116,16 +116,16 @@
 								th:src="${'/uploads/property/'+property.propertyImage2}"
 								class="img-responsive"> </a>
 							<div class="price clearfix">
-								<span class="tag_t">For Sale</span> 
+								<span class="tag_t">Rao bán</span> 
 							</div>
 						</div>
 						<div class="proerty_content">
 
 							<div class="property_meta">
-								<span th:text="${property.propertySize+' Sq.Feet'}"><i
+								<span th:text="${property.propertySize+'m'+'&#178'}"><i
 									class="icon-select-an-objecto-tool"></i>4800</span> <span
-									th:text="${'PropertyType : '+property.propertyType}"><i
-									class="icon-bed"></i>Property Type</span>
+									th:text="${'Loại BĐS: '+property.propertyType}"><i
+									class="icon-bed"></i>Loại bất động sản</span>
 
 							</div>
 							<!-- <div class="proerty_text">
@@ -143,7 +143,7 @@
 
 							<div class="favroute clearfix">
 								<p class="pull-md-left"
-									th:text="${'Rs. '+property.propertyPrice}">Rs 8,600</p>
+									th:text="${property.propertyPrice+'Triệu VNĐ'}">8,600 Triệu VNĐ</p>
 								<ul class="pull-right">
 									<li><a
 										th:href="@{/property/myFavorite/(Url=${property.propertyUrl})}"><i
