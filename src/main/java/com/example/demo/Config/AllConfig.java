@@ -89,7 +89,6 @@ public class AllConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/myaccount").hasAnyRole("USER","ADMIN")
-			.antMatchers("/Buy-Package/**").hasAnyRole("USER","ADMIN")
 			.antMatchers("/about").permitAll()
 			.and()
 			.formLogin()
