@@ -23,12 +23,12 @@
 									<table class="table text-center" id="">
 										<thead>
 											<tr>
-												<th scope="col">Contact_Id</th>
-												<th scope="col"> Name</th>
-												<th scope="col"> Message</th>
-												<th scope="col"> Mobile</th>
+												<th scope="col">ID</th>
+												<th scope="col">Họ tên</th>
+												<th scope="col">Nội dung</th>
+												<th scope="col">SĐT</th>
 												<th scope="col">Email</th>
-												<th scope="col">Reply</th>
+												<th scope="col">Xem</th>
 
 											</tr>
 										</thead>
@@ -40,9 +40,9 @@
 												<td th:text="${cnt.mobile}">Mobile</td>
 												<td th:text="${cnt.email}">Email</td>
 									
-												<td> <button  class="btn-primary" value="Reply"
-													th:href="@{/user/editUser/(Id=${cnt.contactId})}">Reply
-												</button></td> 
+												<td> 
+												<a class="btn btn-primary" href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank">Gửi phản hồi</a>
+												</td> 
 											</tr>
 										</tbody>
 									</table>
@@ -71,6 +71,7 @@
 				</div>
 
 			</div>
+			
 			<!-- end of main-content -->
 		</div>
 		<br> <br> <br> <br> <br> <br> <br>

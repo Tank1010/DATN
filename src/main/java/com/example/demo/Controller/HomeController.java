@@ -31,6 +31,7 @@ import com.example.demo.Repository.ContactRepository;
 import com.example.demo.Repository.OrderPackageRepository;
 import com.example.demo.Repository.OrderResponseRepository;
 import com.example.demo.Repository.UserRepository;
+import com.example.demo.Service.ContactService;
 import com.example.demo.Service.OrderPackageService;
 import com.example.demo.Service.PackageService;
 import com.example.demo.Service.PropertyService;
@@ -66,6 +67,8 @@ public class HomeController {
 	OrderPackageRepository orderPackageRepository;
 	@Autowired
 	OrderResponseRepository orderResponseRepository;
+	@Autowired
+	ContactService contactService;
 
 	public static String uploadDirectory = System.getProperty("user.dir")
 			+ "/src/main/resources/static/uploads/profilePhoto";
@@ -180,8 +183,12 @@ public class HomeController {
 	@RequestMapping(value = "/saveContactMessag")
 	public String saveContactMessage(@ModelAttribute Contact contact) {
 		contactRepository.save(contact);
-
-		return "success";
+		boolean result = contactService.sendMailContact(contact.getEmail(), "Kass RealEstate Phản hồi", 
+				"Chúng tôi đã nhận được phản hồi của bạn, phía tiếp nhận sẽ phản hồi trong thời gian sớm nhất!!! Trân trọng cảm ơn");
+		if(result) {
+			return "success";
+		}
+			return "redirect:/";
 	}
 
 	@RequestMapping(value = "/Buy-Package")

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,6 +52,7 @@ public class AdminController {
 	ContactService contactService;
 	@Autowired
 	PropertyService propertyService;
+	
 	
 	
 	@RequestMapping("/AdminDashBoard")
@@ -199,6 +202,13 @@ public class AdminController {
 			Property property = propertyService.getPropertyByPropertyUrl(Url);
 			model.addAttribute("property", property);
 			return "/Admin/propertyApproval";
+	}
+	@RequestMapping(value="/send-mail")
+	public String sendMailReply(@RequestParam("to")String to,
+			@RequestParam("title") String title, 
+			@RequestParam("content") String content) {
+		
+		return "/Admin/viewAllContact";
 	}
 	
 	@RequestMapping(value="/reject-property")
