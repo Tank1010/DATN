@@ -110,6 +110,15 @@ public class AdminController {
 		model.addAttribute("page", pages);
 		return "/Admin/viewAllUser";
 	}
+	
+	@RequestMapping("edit-user")
+		public String editUserInAdmin(Model model, @RequestParam("id") String id)
+		{
+			Integer idParse = Integer.parseInt(id);
+			User u = userRepository.findOneById(idParse);
+			model.addAttribute("userInfo", u);
+			return "/Admin/editUser";
+		}
 
 	// Manage Property Type 1BHK,2BHK,1RK
 	@RequestMapping("/add-property-type")

@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="text-center">Register Yorself</h1>
+					<h1 class="text-center">Đăng kí tài khoản</h1>
 				</div>
 			</div>
 		</div>
@@ -27,17 +27,7 @@
 	<div class="container-3">
 		<div class="row">
 			<form action="/saveUser" method="post" class="callus clearfix" enctype="multipart/form-data">
-				<div class="col-md-4 col-sm-6 col-xs-12">
-					<h2 class="text-uppercase bottom30">my profile</h2>
-					<div class="agent-p-img">
-					<label>Profile Photo</label>
-						<img src="images/profile.jpg" class="img-responsive" alt="image" />
-						
-						<br><!--  <input id="profilePhoto" name="profilePhoto" required type="file"> -->
-						
-					</div>
-				</div>
-				<div class="col-md-8 text-center">
+				<div class="col-md-12 text-center">
 					<div class="profile-login">
 						<div class="agent-p-form  padding_half">
 
@@ -45,32 +35,35 @@
 								type="hidden" id="status" value="Active">
 							<div class="single-query form-group ">
 								<input type="text" id="firstName" name="firstName"
-									placeholder="First Name">
+									placeholder="Tên">
 							</div>
 							<div class=" single-query form-group">
 								<input type="text" id="lastName" name="lastName"
-									placeholder="Last Name" class="keyword-input">
+									placeholder="Họ" class="keyword-input">
 							</div>
 							<div class="single-query form-group">
-								<input type="text" placeholder="Email Adress"
+								<input type="text" placeholder="Địa chỉ Email(Sử dụng làm user name)"
 									class="keyword-input" id="username" name="username"
 									required="required">
 							</div>
 							<div class="single-query  form-group">
 								<input type="text" id="mobile" name="mobile"
-									placeholder="Mobile No." class="keyword-input">
+									placeholder="Số điện thoại" class="keyword-input">
 							</div>
 							<div class=" single-query form-group">
 								<input type="text" id="address" name=" address"
-									placeholder="Address" class="keyword-input">
+									placeholder="Địa chỉ" class="keyword-input">
 							</div>
 							<div class=" single-query form-group">
 								<input type="password" id="password" name="password"
-									placeholder="Password" class="keyword-input">
+									placeholder="Mật khẩu" class="keyword-input">
 							</div>
 
 							<div class="row col-sm-4 text-center">
-								<input type="submit" value="Register" class="btn-blue">
+								<input type="submit" value="Đăng kí" class="btn-blue">
+								<div class="mt-8">
+									<p>Đã có tài khoản? <a class="text-primary mt-8" href="/login">Đăng nhập</a></p>
+								</div>
 							</div>
 
 

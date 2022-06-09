@@ -37,13 +37,13 @@
 				</div>
 			</div>
 			<div class="row">
-				<form class="callus" action="/property/search-Property" 
-					method="post">
+				<form class="callus" action="/property/search-Property" method="post">
 					<div class="col-md-3 col-sm-6">
 						<div class="single-query form-group">
 							<input type="text" class="keyword-input" id="propertyName"
 								name="propertyName" placeholder="Property name ">
 						</div>
+						
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="single-query form-group">
@@ -57,17 +57,22 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="single-query form-group">
 							<div class="intro">
-							<input type="text" id="propetyType" name="propetyType"
-									placeholder="Enter Type" />
-								
+							<select required id="propertyType" name="propetyType">
+									<option value="none">--Chọn loại bđs--</option>
+									<option th:each="ty:${type}" th:value="${ty.typeName}"
+										th:text="${ty.typeName}"></option>
+							</select>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="single-query form-group">
 							<div class="intro">
-								<input type="text" id="propertyCity" name="propertyCity"
-									placeholder="Enter City" />
+								<select required id="propertyCity" name="propertyCity">
+									<option value="none">--Chọn thành phố--</option>
+									<option th:each="ty:${citySelection}" th:value="${ty.name}"
+										th:text="${ty.name}"></option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -75,7 +80,7 @@
 					<div class="col-md-6" style="float: center">
 						<div class="row">
 							<div class="col-md-4 text-right form-group">
-								<button type="submit" class="btn-blue border_radius top15">Search</button>
+								<button type="submit" class="btn-blue border_radius top15">Tìm kiếm</button>
 							</div>
 						</div>
 					</div>

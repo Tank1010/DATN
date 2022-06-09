@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.Principal;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -214,6 +216,9 @@ public class PropertyController {
 			property.setUserId(u.getId());
 			property.setApproved(false);
 			property.setRejected(false);
+			Date date = new Date();
+			Timestamp timestamp = new Timestamp(date.getTime());
+			property.setCreatedDate(timestamp);
 
 			propertyService.saveProperty(property);
 			Page<Property> pages = propertyService.findAllPropertyByUserId(u.getId(), pageable);
@@ -457,11 +462,19 @@ public class PropertyController {
 	@RequestMapping(value = "/search-Property")
 	public String getSerchedProperty(@ModelAttribute SearchProperty search,
 			@PageableDefault(size = 3) Pageable pageable, Model model) {
-		if(search == null) {
+ 		if(search.getPropertyName().isEmpty() && search.getPropertyLocation().isEmpty() && search.getPropertyCity().equals("none") && search.getPropetyType().equals("none")) {
 			return "redirect:/";
 		}
+ 		if(search.getPropertyCity().equals("none")) {
+ 			search.setPropertyCity("");
+ 		}
+ 		if(search.getPropetyType().equals("none")) {
+ 			search.setPropetyType("");
+ 		}
 		Page<Property> pages = propertyService.findAllPropertyBySearchUrl(search, pageable);
 		model.addAttribute("page", pages);
+		
+		
 		return "SearchProperties";
 	}
 	

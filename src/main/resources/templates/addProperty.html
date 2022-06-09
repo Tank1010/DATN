@@ -367,7 +367,9 @@
 			var autocomplete;
 			var id ='propertyLocation';
 			
-			autocomplete = new google.maps.places.Autocomplete(document.getElementById(id));
+			autocomplete = new google.maps.places.Autocomplete(document.getElementById(id),{
+				componentRestrictions:{'country':['vn']],'city':'Hà Nội'}
+			});
 		})
 	</script>
 </body>

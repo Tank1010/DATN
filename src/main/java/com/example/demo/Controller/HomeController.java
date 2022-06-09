@@ -36,6 +36,7 @@ import com.example.demo.Service.OrderPackageService;
 import com.example.demo.Service.PackageService;
 import com.example.demo.Service.PropertyService;
 import com.example.demo.Service.PropertyTypeService;
+import com.example.demo.Service.SelectionService;
 import com.example.demo.Service.UserService;
 
 import com.example.demo.Model.Contact;
@@ -43,8 +44,9 @@ import com.example.demo.Model.OrderPackage;
 import com.example.demo.Model.OrderRequest;
 import com.example.demo.Model.OrderResponse;
 import com.example.demo.Model.Property;
+import com.example.demo.Model.PropertyAmenities;
 import com.example.demo.Model.PropertyType;
-
+import com.example.demo.Model.Tinhthanhpho;
 import com.example.demo.Model.Package;
 
 @Controller
@@ -69,6 +71,10 @@ public class HomeController {
 	OrderResponseRepository orderResponseRepository;
 	@Autowired
 	ContactService contactService;
+	@Autowired
+	SelectionService selectionService;
+	@Autowired
+	
 
 	public static String uploadDirectory = System.getProperty("user.dir")
 			+ "/src/main/resources/static/uploads/profilePhoto";
@@ -94,8 +100,13 @@ public class HomeController {
 
 		Page<Property> pages = propertyService.findAllValid(pageable);
 		List<PropertyType> list = propertyTypeService.showAllPropertyType();
+		
 		model.addAttribute("serchType", list);
 		model.addAttribute("page", pages);
+		List<PropertyType> typelist = propertyTypeService.showAllPropertyType();
+		model.addAttribute("type", typelist);
+		List<Tinhthanhpho> typeCity = selectionService.getAllCities();
+		model.addAttribute("citySelection", typeCity);
 	
 		return "index";
 	}
@@ -110,14 +121,25 @@ public class HomeController {
 
 		return "registerUser";
 	}
-
+	@RequestMapping(value="registerfail")
+	public String userNameInvalid() {
+		return "UserInvalid";
+	}
+	
+	
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	// @RequestParam("profilePhoto") MultipartFile profilePhoto,
 	public String registerNewUser(User user, BindingResult bindingResult) {
 
-	
-		userService.saveNewUser(user);
-		return "redirect:/login";
+		User u = userService.getUserByUsername(user.getUsername());
+		if(u == null) {
+			userService.saveNewUser(user);
+			return "redirect:/login";
+		}
+		else {
+			return "RegisFail";
+		}
+		
 	}
 
 	@RequestMapping("/my-profile")
