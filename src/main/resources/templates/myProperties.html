@@ -30,17 +30,17 @@
     <div class="row">
       <div class="col-md-12">
         <ul class="f-p-links margin_bottom">
-          <li><a href="/my-profile"><i class="icon-icons230"></i>Profile</a></li>
-          <li><a href="/property/my-properties" ><i class="icon-icons215"></i> My Properties</a></li>
-          <li><a href="/property/add-property"><i class="icon-icons215"></i> Submit Property</a></li>
-          <li><a href="favorite_properties.html"><i class="icon-icons43"></i> Favorite Properties</a></li>
-          <li><a href="/logout"><i class="icon-lock-open3"></i>Logout</a></li>
+          <li><a href="/my-profile"><i class="icon-icons230"></i>Hồ sơ</a></li>
+          <li><a href="/property/my-properties" ><i class="icon-icons215"></i>Bài đăng của tôi</a></li>
+          <li><a href="/property/add-property"><i class="icon-icons215"></i>Thêm bài đăng</a></li>
+          <li><a href="favorite_properties.html"><i class="icon-icons43"></i> Bài đăng đã thích</a></li>
+          <li><a href="/logout"><i class="icon-lock-open3"></i>Đăng xuất</a></li>
         </ul>
       </div>
     </div>
     <div class="row bottom30">
       <div class="col-md-12 text-center">
-        <h2 class="text-uppercase">My Properties</h2>
+        <h2 class="text-uppercase">Bài đăng của tôi</h2>
       </div>
     </div>
   </div>
@@ -56,9 +56,9 @@
           <div class="feature-p-text">
             <h4 th:text="${property.propertyName}">Historic Town House</h4>
             <p th:text="${property.propertyLocation}">Action Area I, Newtown, New Town, West Bengal, India</p>
-            <span><b>Status:</b>  For Sale</span><br><br>
+            <span><b>Trạng thái:</b>  Đang duyệt</span><br><br>
             <div >
-        <span  th:text="${'Rs. '+property.propertyPrice}">$128,600</span>
+        <span  th:text="${property.propertyPrice+'Triệu VNĐ'}">128,600</span>
             </div>
           </div>
         </div>

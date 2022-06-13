@@ -15,8 +15,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="text-uppercase">Welcome</h1>
-					<p>To Castle Real Estate</p>
+					<h1 class="text-uppercase">Chào mừng đến với</h1>
+					<p> Castle Real Estate</p>
 
 				</div>
 			</div>
@@ -27,13 +27,67 @@
 <!-- All Properties By  Search -->
 <section id="property" class="padding index2 bg_light">
 		<div class="container">
-		
+			<div class="row">
+				<form class="callus" action="/property/search-Property" method="post">
+					<div class="col-md-3 col-sm-6">
+						<div class="single-query form-group">
+							<input type="text" class="keyword-input" id="propertyName"
+								name="propertyName" placeholder="Tên bài đăng">
+						</div>
+						
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="single-query form-group">
+							<div class="intro">
+								<input type="text" id="propertyLocation"
+									name="propertyLocation"
+									placeholder="Nhập địa chỉ" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="single-query form-group">
+							<div class="intro">
+							<select required id="propertyType" name="propetyType">
+									<option value="none">--Sắp xếp theo--</option>
+									<option value="1">Giá tăng dần</option>
+									<option value="2">Giá giảm dần</option>
+									<option value="3">Diện tích tăng dần</option>
+									<option value="4">Diện tích giảm dần</option>
+							</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-6">
+						<div class="single-query form-group">
+							<div class="intro">
+								<select required id="propertyCity" name="propertyCity">
+									<option value="none">--Chọn số phòng--</option>
+									<option value="1">1 phòng--</option>
+									<option value="2">2 phòng--</option>
+									<option value="3">3 phòng--</option>
+									<option value="4">4 phòng--</option>
+									<option value="5">5 phòng--</option>
+									<option value="6">6 phòng--</option>
+									<option value="7">7 phòng--</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6" style="float: center">
+						<div class="row">
+							<div class="col-md-4 text-right form-group">
+								<button type="submit" class="btn-blue border_radius top15">Lọc</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
 			<div class="row ">
 				<div class="col-xs-12 text-center">
-					<h2 class="uppercase">PROPERTIES</h2>
-					<p class="heading_space">We are proud to present to you some of
-						the best homes, apartments across Pune for
-						affordable prices.</p>
+					<h2 class="uppercase">KẾT QUẢ TÌM KIẾM</h2>
+					<p class="heading_space">Chúng tôi đã cố gắng để tối ưu hóa việc tìm kiếm để đem tới trải nghiệm tốt nhất cho người dùng</p>
 				</div>
 			</div>
 			<div class="row">
@@ -54,25 +108,20 @@
 								th:src="${'/uploads/property/'+property.propertyImage2}"
 								class="img-responsive"> </a>
 							<div class="price clearfix">
-								<span class="tag pull-right">For Sale</span>
+								<span class="tag pull-right">Đang bán</span>
 							</div>
 						</div>
 						<div class="proerty_content">
 							<div class="property_meta">
-								<span th:text="${property.propertySize+' Sq.Feet'}"><i
+								<span th:text="${property.propertySize+' m &#178'}"><i
 									class="icon-select-an-objecto-tool"></i>4800</span> <span
-									th:text="${'PropertyType : '+property.propertyType}"><i
+									th:text="${'Loại BĐS : '+property.propertyType}"><i
 									class="icon-bed"></i>Property Type</span>
 
 							</div>
-							<div class="proerty_text">
-								<p th:utext="${property.propertyDescription}">Lorem ipsum
-									dolor sit amet, consectetuer adipiscing elit, sed diam power
-									nonummy nibh tempor cum soluta nobis �</p>
-							</div>
 							<div class="favroute clearfix">
 								<p class="pull-md-left"
-									th:text="${'Rs. '+property.propertyPrice}">Rs 8,600</p>
+									th:text="${property.propertyPrice+'Triệu VNĐ'}">Rs 8,600</p>
 								<ul class="pull-right">
 									<li><a href="#."><i class="icon-like"></i></a></li>
 

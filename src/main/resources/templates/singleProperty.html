@@ -63,34 +63,34 @@
 						</div>
 					</div>
 					<div class="property_meta bg-black bottom40">
-						<span th:text="${property.propertySize+' Sq.Feet'}"><i
+						<span th:text="${property.propertySize+'m &#178'}"><i
 							class="icon-select-an-objecto-tool"></i>4800 sq ft</span> <span
-							th:text="${'PropertyType : '+property.propertyType}"><i
-							class=" icon-microphone"></i>Type</span>
+							th:text="${'Loại BĐS : '+property.propertyType}"><i
+							class=" icon-microphone"></i>Loại nhà đất</span>
 
 					</div>
 				</div>
 				<div class="col-md-8 listing1">
-					<h2 class="text-uppercase">Property Description</h2>
+					<h2 class="text-uppercase">Giới thiệu</h2>
 					<p class="bottom30" th:utext="${property.propertyDescription}">Description</p>
 
-					<h2 class="text-uppercase bottom20">Quick Summary</h2>
+					<h2 class="text-uppercase bottom20">Thông số nhà đất</h2>
 					<div class="row property-d-table bottom40">
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							<table class="table table-striped table-responsive">
 								<tbody>
 									<tr>
-										<td><b>Property Id</b></td>
+										<td><b>Mã bài đăng</b></td>
 										<td th:text="${property.propertyId}" class="text-right">5456</td>
 									</tr>
 									<tr>
-										<td><b>Price</b></td>
-										<td th:text="${'Rs. '+property.propertyPrice}"
+										<td><b>Giá căn hộ</b></td>
+										<td th:text="${property.propertyPrice+'Triệu VNĐ'}"
 											class="text-right">$8,600 / month</td>
 									</tr>
 									<tr>
-										<td><b>Property Size</b></td>
-										<td th:text="${property.propertySize+' Sq.Feet'}"
+										<td><b>Diện tích</b></td>
+										<td th:text="${property.propertySize+'m &#178'}"
 											class="text-right">5,500 ft2</td>
 									</tr>
 
@@ -99,7 +99,7 @@
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-12"></div>
 					</div>
-					<h2 class="text-uppercase bottom20">Amenities</h2>
+					<h2 class="text-uppercase bottom20">Tag</h2>
 					<div class="row bottom40">
 						<div class="col-md-4 col-sm-6 col-xs-12"
 							th:each="list:${property.amenitiesList}">
@@ -116,7 +116,7 @@
 					<div sec:authorize="isAnonymous()">
 						<a href="/login">
 							<button style="float: center" type="submit"
-								class="btn-blue border_radius">Buy Porperty</button>
+								class="btn-blue border_radius">Mua bất động sản</button>
 						</a>
 					</div>
 					<br> <br>
@@ -124,14 +124,14 @@
 						<div sec:authorize="isAuthenticated()">
 							<div style="float: center">
 								<button id="ownerContact" type="submit"
-									class="btn-blue border_radius">Contact Owner</button>
+									class="btn-blue border_radius">Liên hệ người bán</button>
 							</div>
 							<br> <br>
 							<div id="owner">
 								<div th:if="${warning == 'last'}">
-									<p style="color: red">*Upgrade the Pack</p>
+									<p style="color: red">*Nâng cấp gói</p>
 								</div>
-								<h2 class="text-uppercase bottom20">Property Owner</h2>
+								<h2 class="text-uppercase bottom20">Liên hệ người bán</h2>
 								<div class="col-sm-4 bottom40">
 									<div class="agent_wrap">
 										<div class="image">
@@ -149,14 +149,14 @@
 									<table class="agent_contact table">
 										<tbody>
 											<tr class="bottom10">
-												<td><strong>Phone:</strong></td>
+												<td><strong>Số điện thoại:</strong></td>
 												<td th:text="${user.mobile}" class="text-right">(+01)
 													34 56 7890</td>
 											</tr>
 											<tr>
-												<td><strong>Email Adress:</strong></td>
+												<td><strong>Địa chỉ Email:</strong></td>
 												<td th:text="${user.username}" class="text-right"><a
-													href="#.">bohdan@castle.com</a></td>
+													href="#.">maincreep1010@gmail</a></td>
 											</tr>
 
 										</tbody>
@@ -238,7 +238,47 @@
 		</div>
 	</section>
 	<!-- Property Detail End -->
-
+	<section id="contact-them">
+		<div class="contact">
+		  <div id="map"></div>
+		  <div class="container">
+		    <div class="row">
+			 <div class="col-md-10   contact-text">
+				    </div>
+				
+					<div class="agent-p-form">
+					    <div class="our-agent-box bottom30">
+					   </div>
+					   
+					   <div class="row">
+						<form action="/saveContactMessag" method="post" class="callus">
+						  <div class="col-md-8">
+						    <div class="single-query form-group">
+							 <input type="text" id="name" name="name" placeholder="Tên của bạn" class="keyword-input">
+							 </div>
+							 <div class="single-query form-group">
+							 <input type="text" id="mobile" name="mobile" placeholder="Số điện thoại liên hệ" class="keyword-input">
+						    </div>
+						    <div class="single-query form-group">
+							 <input type="text" id="email" name="email" placeholder="Địa chỉ Email" class="keyword-input">
+						    </div>
+						    <div class="single-query form-group">
+							 <textarea  id="message" name="message" placeholder="Nội dung" class="form-control"></textarea>
+						    </div>
+						    <input type="submit" value="Gửi" class="btn-blue">
+						    </div>
+						</form>
+						
+					   </div>
+					    
+				    </div>
+				    
+				</div>
+				
+			 </div>
+		  </div>
+		</div>
+	   </section>
 
 	<!-- Body ContentEnd -->
 
@@ -250,5 +290,12 @@
     =============================================-->
 	<div th:replace="Layout :: footerLink"></div>
 	<!--=====  End of JS files ======-->
+	<script>
+		var ContactForm = document.getElementById('	');
+		var btn = document.getElementById('ownerContact');
+		btn.addEventListener('click', function(){
+			ContactForm.style.display ='block';
+		});
+	</script>
 </body>
 </html>
